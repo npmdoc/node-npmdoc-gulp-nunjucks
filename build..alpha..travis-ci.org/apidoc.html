@@ -1,0 +1,411 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/sindresorhus/gulp-nunjucks#readme"
+
+    >gulp-nunjucks (v3.0.0)</a>
+</h1>
+<h4>Compile/precompile Nunjucks templates</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-nunjucks">module gulp-nunjucks</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-nunjucks.gulp-nunjucks">
+            function <span class="apidocSignatureSpan"></span>gulp-nunjucks
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-nunjucks.compile">
+            function <span class="apidocSignatureSpan">gulp-nunjucks.</span>compile
+            <span class="apidocSignatureSpan">(data, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-nunjucks.precompile">
+            function <span class="apidocSignatureSpan">gulp-nunjucks.</span>precompile
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-nunjucks.toString">
+            function <span class="apidocSignatureSpan">gulp-nunjucks.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-nunjucks.compile">module gulp-nunjucks.compile</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-nunjucks.compile.compile">
+            function <span class="apidocSignatureSpan">gulp-nunjucks.</span>compile
+            <span class="apidocSignatureSpan">(data, opts)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-nunjucks.toString">module gulp-nunjucks.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-nunjucks.toString.toString">
+            function <span class="apidocSignatureSpan">gulp-nunjucks.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-nunjucks" id="apidoc.module.gulp-nunjucks">module gulp-nunjucks</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-nunjucks.gulp-nunjucks" id="apidoc.element.gulp-nunjucks.gulp-nunjucks">
+        function <span class="apidocSignatureSpan"></span>gulp-nunjucks
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function precompile(opts) {
+	return through.obj(function (file, enc, cb) {
+		if (file.isNull()) {
+			cb(null, file);
+			return;
+		}
+
+		if (file.isStream()) {
+			cb(new gutil.PluginError(&#x27;gulp-nunjucks&#x27;, &#x27;Streaming not supported&#x27;));
+			return;
+		}
+
+		const options = Object.assign({}, opts);
+		const filePath = file.path;
+
+		try {
+			options.name = (typeof options.name === &#x27;function&#x27; &#x26;&#x26; options.name(file)) || file.relative;
+			file.contents = new Buffer(nunjucks.precompileString(file.contents.toString(), options));
+			file.path = gutil.replaceExtension(filePath, &#x27;.js&#x27;);
+			this.push(file);
+		} catch (err) {
+			this.emit(&#x27;error&#x27;, new gutil.PluginError(&#x27;gulp-nunjucks&#x27;, err, {fileName: filePath}));
+		}
+
+		cb();
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-nunjucks.compile" id="apidoc.element.gulp-nunjucks.compile">
+        function <span class="apidocSignatureSpan">gulp-nunjucks.</span>compile
+        <span class="apidocSignatureSpan">(data, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function compile(data, opts) {
+	return through.obj(function (file, enc, cb) {
+		if (file.isNull()) {
+			cb(null, file);
+			return;
+		}
+
+		if (file.isStream()) {
+			cb(new gutil.PluginError(&#x27;gulp-nunjucks&#x27;, &#x27;Streaming not supported&#x27;));
+			return;
+		}
+
+		const context = Object.assign({}, data, file.data);
+		const filePath = file.path;
+		const env = (opts &#x26;&#x26; opts.env) || new nunjucks.Environment(new nunjucks.FileSystemLoader(file.base), opts);
+
+		try {
+			file.contents = new Buffer(env.renderString(file.contents.toString(), context));
+			this.push(file);
+		} catch (err) {
+			this.emit(&#x27;error&#x27;, new gutil.PluginError(&#x27;gulp-nunjucks&#x27;, err, {fileName: filePath}));
+		}
+
+		cb();
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```js
+const gulp = require(&#x27;gulp&#x27;);
+const nunjucks = require(&#x27;gulp-nunjucks&#x27;);
+
+gulp.task(&#x27;default&#x27;, () =&#x3e;
+	gulp.src(&#x27;templates/greeting.html&#x27;)
+		.pipe(nunjucks.<span class="apidocCodeKeywordSpan">compile</span>({name: &#x27;Sindre&#x27;}))
+		.pipe(gulp.dest(&#x27;dist&#x27;))
+);
+```
+
+You can alternatively use [gulp-data](https://github.com/colynb/gulp-data) to inject the data:
+
+```js
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-nunjucks.precompile" id="apidoc.element.gulp-nunjucks.precompile">
+        function <span class="apidocSignatureSpan">gulp-nunjucks.</span>precompile
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function precompile(opts) {
+	return through.obj(function (file, enc, cb) {
+		if (file.isNull()) {
+			cb(null, file);
+			return;
+		}
+
+		if (file.isStream()) {
+			cb(new gutil.PluginError(&#x27;gulp-nunjucks&#x27;, &#x27;Streaming not supported&#x27;));
+			return;
+		}
+
+		const options = Object.assign({}, opts);
+		const filePath = file.path;
+
+		try {
+			options.name = (typeof options.name === &#x27;function&#x27; &#x26;&#x26; options.name(file)) || file.relative;
+			file.contents = new Buffer(nunjucks.precompileString(file.contents.toString(), options));
+			file.path = gutil.replaceExtension(filePath, &#x27;.js&#x27;);
+			this.push(file);
+		} catch (err) {
+			this.emit(&#x27;error&#x27;, new gutil.PluginError(&#x27;gulp-nunjucks&#x27;, err, {fileName: filePath}));
+		}
+
+		cb();
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```js
+const gulp = require(&#x27;gulp&#x27;);
+const nunjucks = require(&#x27;gulp-nunjucks&#x27;);
+
+gulp.task(&#x27;default&#x27;, () =&#x3e;
+	gulp.src(&#x27;templates/greeting.html&#x27;)
+		.pipe(nunjucks.<span class="apidocCodeKeywordSpan">precompile</span>())
+		.pipe(gulp.dest(&#x27;dist&#x27;))
+);
+```
+
+
+## API
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-nunjucks.toString" id="apidoc.element.gulp-nunjucks.toString">
+        function <span class="apidocSignatureSpan">gulp-nunjucks.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+		}
+
+		const context = Object.assign({}, data, file.data);
+		const filePath = file.path;
+		const env = (opts &#x26;&#x26; opts.env) || new nunjucks.Environment(new nunjucks.FileSystemLoader(file.base), opts);
+
+		try {
+			file.contents = new Buffer(env.renderString(file.contents.<span class="apidocCodeKeywordSpan">toString</span>(), context));
+			this.push(file);
+		} catch (err) {
+			this.emit(&#x27;error&#x27;, new gutil.PluginError(&#x27;gulp-nunjucks&#x27;, err, {fileName: filePath}));
+		}
+
+		cb();
+	});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-nunjucks.compile" id="apidoc.module.gulp-nunjucks.compile">module gulp-nunjucks.compile</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-nunjucks.compile.compile" id="apidoc.element.gulp-nunjucks.compile.compile">
+        function <span class="apidocSignatureSpan">gulp-nunjucks.</span>compile
+        <span class="apidocSignatureSpan">(data, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function compile(data, opts) {
+	return through.obj(function (file, enc, cb) {
+		if (file.isNull()) {
+			cb(null, file);
+			return;
+		}
+
+		if (file.isStream()) {
+			cb(new gutil.PluginError(&#x27;gulp-nunjucks&#x27;, &#x27;Streaming not supported&#x27;));
+			return;
+		}
+
+		const context = Object.assign({}, data, file.data);
+		const filePath = file.path;
+		const env = (opts &#x26;&#x26; opts.env) || new nunjucks.Environment(new nunjucks.FileSystemLoader(file.base), opts);
+
+		try {
+			file.contents = new Buffer(env.renderString(file.contents.toString(), context));
+			this.push(file);
+		} catch (err) {
+			this.emit(&#x27;error&#x27;, new gutil.PluginError(&#x27;gulp-nunjucks&#x27;, err, {fileName: filePath}));
+		}
+
+		cb();
+	});
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```js
+const gulp = require(&#x27;gulp&#x27;);
+const nunjucks = require(&#x27;gulp-nunjucks&#x27;);
+
+gulp.task(&#x27;default&#x27;, () =&#x3e;
+	gulp.src(&#x27;templates/greeting.html&#x27;)
+		.pipe(nunjucks.<span class="apidocCodeKeywordSpan">compile</span>({name: &#x27;Sindre&#x27;}))
+		.pipe(gulp.dest(&#x27;dist&#x27;))
+);
+```
+
+You can alternatively use [gulp-data](https://github.com/colynb/gulp-data) to inject the data:
+
+```js
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-nunjucks.toString" id="apidoc.module.gulp-nunjucks.toString">module gulp-nunjucks.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-nunjucks.toString.toString" id="apidoc.element.gulp-nunjucks.toString.toString">
+        function <span class="apidocSignatureSpan">gulp-nunjucks.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+		}
+
+		const context = Object.assign({}, data, file.data);
+		const filePath = file.path;
+		const env = (opts &#x26;&#x26; opts.env) || new nunjucks.Environment(new nunjucks.FileSystemLoader(file.base), opts);
+
+		try {
+			file.contents = new Buffer(env.renderString(file.contents.<span class="apidocCodeKeywordSpan">toString</span>(), context));
+			this.push(file);
+		} catch (err) {
+			this.emit(&#x27;error&#x27;, new gutil.PluginError(&#x27;gulp-nunjucks&#x27;, err, {fileName: filePath}));
+		}
+
+		cb();
+	});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
