@@ -74,7 +74,7 @@
 <tspan x="10" y="1146">  │ │ │   │ └── is-posix-bracket@0.1.1 </tspan>
 <tspan x="10" y="1162">  │ │ │   ├── extglob@0.3.2 </tspan>
 <tspan x="10" y="1178">  │ │ │   ├── filename-regex@2.0.0 </tspan>
-<tspan x="10" y="1194">  │ │ │   ├─┬ kind-of@3.1.0 </tspan>
+<tspan x="10" y="1194">  │ │ │   ├─┬ kind-of@3.2.0 </tspan>
 <tspan x="10" y="1210">  │ │ │   │ └── is-buffer@1.1.5 </tspan>
 <tspan x="10" y="1226">  │ │ │   ├─┬ normalize-path@2.1.1 </tspan>
 <tspan x="10" y="1242">  │ │ │   │ └── remove-trailing-separator@1.0.1 </tspan>
