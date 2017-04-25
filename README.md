@@ -1,4 +1,7 @@
-# api documentation for  [gulp-nunjucks (v3.0.0)](https://github.com/sindresorhus/gulp-nunjucks#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-nunjucks.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-nunjucks) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-nunjucks.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-nunjucks)
+# npmdoc-gulp-nunjucks
+
+#### basic api documentation for  [gulp-nunjucks (v3.0.0)](https://github.com/sindresorhus/gulp-nunjucks#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-nunjucks.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-nunjucks) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-nunjucks.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-nunjucks)
+
 #### Compile/precompile Nunjucks templates
 
 [![NPM](https://nodei.co/npm/gulp-nunjucks.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/gulp-nunjucks)
@@ -81,7 +84,8 @@
     "version": "3.0.0",
     "xo": {
         "esnext": true
-    }
+    },
+    "bin": {}
 }
 ```
 
